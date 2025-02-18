@@ -1,0 +1,24 @@
+     <!-- ######################     Main Navigation   ########################## -->
+     <nav>
+	   <a href="/">
+	     Back to Search
+	   </a>
+	   <form class="nav_display_domains" action="{{url_for('display_domains')}}" method="get">
+         <button type="submit" name="Display">Display Full DB Domain List</button>
+	   </form>
+	   <div class="dropdown">
+	     <button class="dropbtn">Keyword Functions</button>
+		 <div class="dropdown-content">
+		   <a href="/display_keywords">Display All Keywords</a>
+	       <a href="/update_keywords">Update/Add Keywords</a>
+           <a href="/delete_keywords">Remove Keywords</a>
+	     </div>
+	   </div>
+	   <form class="nav_domain_search" action="{{url_for('domain_form')}}" method="post" style="float: right;">
+          <input type="text" name="value" placeholder="Enter ID...">
+	      <button type="submit" name="Submit">Search</button>
+        </form>
+      </nav>
+	  <!-- #################### Ends Main Navigation    ########################## -->
+      <!-- #################### Primary Content ##################### -->
+      <div style="padding-top: 60px; margin-left: 3em;overflow: hidden;">

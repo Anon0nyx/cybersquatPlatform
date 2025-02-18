@@ -1,0 +1,34 @@
+{% include 'top.html' %} 
+{% include 'nav.html' %}
+  <table class="keyword_table">
+    <tr class="info">
+	  <td>
+	    <b>ID TAG</b>
+      </td>
+	  <td>
+	   <b> Initial Keywords</b>
+	  </td>
+	  <td>
+	   <b> Final Keywords</b>
+	  </td>
+    </tr>
+  {% for client in data %}
+      <tr>
+	    <td>
+		  <form action="{{url_for('domain_form')}}" method="post">
+	        <button type="client" name="value" value="{{client['name']}}">{{client['name']}}</button>
+  	      </form>
+	    </td>
+		<td>
+		  <h3>
+	        {{client['initial_keywords']}}
+	      </h3>
+	    </td>
+		<td>
+		  <h3>
+	        {{client['final_keyword']}}
+  	      </h3>
+		</td>
+  {% endfor %}
+  </table>
+{% include 'footer.html' %}

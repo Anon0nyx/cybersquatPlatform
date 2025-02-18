@@ -1,0 +1,17 @@
+flask
+argparse
+dnspython
+requests
+strsimpy
+confusable_homoglyphs
+homoglyphs
+colorama
+requests
+numpy
+pytest
+pytest-cov
+codecov
+coverage
+black
+flake8
+beautifulsoup4

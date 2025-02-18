@@ -1,0 +1,17 @@
+{% include 'top.html' %}
+{% include 'nav.html' %}
+  {% if data %}   
+	<h1>{{ data }}</h1>
+  {% endif %}
+  <h1 style="padding-top:3em;font-size:42px;">Create Keywords to Monitor</h1>
+  <form class="keyword_update" action="{{url_for('update_keywords')}}" method="post">
+    <input class="client_id" type="text" name="id_tag" placeholder="Enter ID Tag [ie res1234]...">
+	<input class="keywords_initial" type="text" name="initial_keywords" placeholder="Enter Phase I Keywords">
+	<input class="keywords_final" type="text" name="final_keyword" placeholder="Enter ONE Phase II Keyword">
+	<button type="submit" name="Submit">Submit</button><br>
+  </form>
+  <br>
+  <p style="margin: auto;">Use Comma Delimiter For Initial Keyword Lists</p>
+  <p style="margin: auto;">NOTE: Only 1 final keyword is permitted</p>
+  <a href="/beginner_guide"><b>First-Use Guide</b></a>
+{% include 'footer.html' %}

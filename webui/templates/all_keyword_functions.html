@@ -1,0 +1,61 @@
+{% include 'top.html' %}
+{% include 'nav.html' %}
+
+<!-- THIS IS WHERE THE KEYWORDS/IDS ARE DISPLAYED -->
+<div class="display_keyword_function">
+  <table class="keyword_table">
+    <tr class="info">
+	  <td>
+	    <b>ID TAG</b>
+      </td>
+	  <td>
+	   <b> Initial Keywords</b>
+	  </td>
+	  <td>
+	   <b> Final Keywords</b>
+	  </td>
+    </tr>
+  {% for client in data %}
+      <tr>
+	    <td>
+		  <form action="{{url_for('domain_form')}}" method="post">
+	        <button type="client" name="value" value="{{client['name']}}">{{client['name']}}</button>
+  	      </form>
+	    </td>
+		<td>
+		  <h3>
+	        {{client['initial_keywords']}}
+	      </h3>
+	    </td>
+		<td>
+		  <h3>
+	        {{client['final_keyword']}}
+  	      </h3>
+		</td>
+  {% endfor %}
+  </table>
+</div>
+
+<!-- THIS IS WHERE THE UPDATE/ADD KEYWORD SECTION BEGINS -->
+<div class="update_add_functions">
+  <h1 style="padding-top:1em;font-size:42px;">Create Keywords to Monitor</h1>
+  <form class="keyword_update" action="{{url_for('update_keywords')}}" method="post">
+    <input class="client_id" type="text" name="id_tag" placeholder="Enter ID Tag...">
+	<input class="keywords_initial" type="text" name="initial_keywords" placeholder="Enter Phase I Keywords">
+	<input class="keywords_final" type="text" name="final_keyword" placeholder="Enter ONE Phase II Keyword">
+	<button type="submit" name="Submit">Submit</button><br>
+  </form>
+  <br>
+  <p style="margin: auto;">Use Comma Delimiter For Initial Keyword Lists</p>
+  <p style="margin: auto;">NOTE: Only 1 final keyword is permitted</p>
+</div>
+
+<!-- THIS IS WHERE THE REMOVE KEYWORD SECTION BEGINS -->
+<div class="delete_functions">
+  <h1 style="color:white;font-size:45px;padding-top:3em;magin:auto;">Enter ID to Delete</h1>
+  <form class="domain_search" action="{{url_for('delete_keywords')}}" method="post">
+    <input class="client_id_to_delete" type="text" name="id_tag" placeholder="ID To Delete...">
+	<button class="delete_id_button" type="submit" name="submit">Delete</button><br>
+  </form>
+</div>
+{% include 'footer.html' %}

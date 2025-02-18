@@ -1,0 +1,12 @@
+{% include 'top.html' %}
+{% include 'nav.html' %}
+  {% if data %}
+    <h1>{{data}}</h1>
+  {% endif %}
+  <h1 style="color:white;font-size:45px;padding-top:3em;magin:auto;">Enter ID to Delete</h1>
+  <form class="domain_search" action="{{url_for('delete_keywords')}}" method="post">
+    <input class="client_id_to_delete" type="text" name="id_tag" placeholder="ID To Delete...">
+	<button class="delete_id_button" type="submit" name="submit">Delete</button><br>
+  </form>
+  <br>
+{% include 'footer.html' %}

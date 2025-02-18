@@ -1,0 +1,86 @@
+{% include 'top.html' %}
+{% include 'nav.html' %}
+
+  <h1 style="font-size: 42px;margin-bottom:1em;">First-Use Guide to Inserting & Updating Keywords</h1>
+  <div class="left_side" style="width:50%;float:left;text-align:left;max-height:49em;overflow-y:scroll;">
+    <h2 style="text-align:center;"><u>Adding Keywords</u></h2>
+    <h3 style="text-align:center;"><b>Tagging</b></h3>
+	<p style="font-size:18px;">
+	  When adding keywords it is crucial to first create an appropriate ID tag to use with the search engine
+	  to display the data collected with the keywords. There are set 3 character tags that we use and are
+	  as follows
+	</p>
+	<ul style="font-size:18px;">
+	  <li>med</li>
+	    <ul>
+		  <li>For keywords associated to the Medical Sector</li>
+		</ul>
+	  <li>gov</li>
+	    <ul>
+		  <li>For keywords associated to the Government Sector</li>
+		</ul>
+	  <li>com</li>
+	    <ul>
+		  <li>For keywords associated to the Commercial Sector</li>
+		</ul>
+	  <li>pub</li>
+	    <ul>
+		  <li>For keywords associated to the Public Sector</li>
+		</ul>
+	  <li>edu</li>
+	    <ul>
+		  <li>For keywords associated to the Educational Sector</li>
+		</ul>
+      <li>fin</li>
+	    <ul>
+		  <li>For keywords associated to the Financial Sector</li>
+		</ul>
+	  <li>res</li>
+	    <ul>
+		  <li>For keywords with no specific sector association (Research keywords)</li>
+		</ul>
+  </ul>
+  <p style="font-size:18px;">
+    Once the proper tag is chosen depending on the sector association, choose four random integers to follow the tag.
+	A proper ID tag example would be:
+  </p>
+  <h1 style="text-align:center;"><b>med3806</b></h1>
+  <p style="font-size:18px;">
+    Once the ID tag is created move onto determining the list of initial keywords to be used. The results produced by these keywords
+	are critical in determining the later products of the system. It is important to take the first two iterations into account when
+	determining the initial keywords:</p>
+  <h3 style="text-align:center;"><u>First Iteration</u></h3>
+  <p style="font-size:18px;">
+    The first iteration works by running OpenSquat with these intial keywords on the WhoISDS database of newly registered
+	domains. So this first iteration will pull domains from a database of domains registered in the past 24hrs based on 
+	these initial keywords. Once this iteration is done the subdomains will be collected for each of these flagged domains.
+	This is done to catch squatted domains such as 'meta[.]com' where if the only intial keyword used is 'nuharbor'
+	this initial domain will not be flagged, so using the initial keyword 'security' along with 'nuharbor' will catch attempts
+	such as this. It is important to take this into consideration when determining the inital keywords.
+  </p>
+  <h3 style="text-align:center;"><u>Second Iteration</u></h3>
+  <p style="font-size:18px;">
+    Once the first iteration is finished, all of the domains that were collected have their subdomains enumerated using Sublist3r.py
+    and then the domains and subdomains are run through OpenSquat again, but with the final keyword. Only one final keyword is permitted
+	for later enrichment and so this keyword must be the most specific to what the aim of the collection is. For example: if looking to
+	find domains squatted for Meta, the initial keywords may be:
+  </p>
+  <ul>
+    <li>meta</li>
+	<li>facebook</li>
+	<li>(<i>And any additional broad keywords</i>)</li>
+  </ul>
+  <p style="font-size:18px;">
+    And the final keyword could be just simply 'meta'. This set of keywords would allow for subdomains such as the one aforementioned
+	that would not be flagged by only using the initial keyword 'meta' but would be flagged with the initial keywords 'meta'
+  </p>
+  </div>
+  <div class="right_side" style="width:50%;float:left;">
+    <h2><u>Updating Keywords</u></h2>
+    <p style="font-size:18px;text-align:left;">
+	  Updating keywords is simple if the ID tag for those keywords is known, which is why it is critical to remember the ID tag used, as it only requires
+	  entering the new intial keywords and final keyword along with the ID tag and the API updates the database accordingly. This would be done in instances
+	  where perhaps an initial keyword is forgotten, or if one is thought-up later on.
+	</p>
+  </div>
+{% include 'footer.html' %}

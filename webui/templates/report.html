@@ -1,0 +1,93 @@
+{% include 'top.html' %}
+{% include 'nav.html' %}
+	 <div style="max-height:100vh;overflow-y:auto;">
+	 <!-- DETERMINE IF THERE IS AVAILABLE DATA TO DISPLAY -->
+     {% if data %}
+	   <h2>Report for: {{ data[0]['id'] }} </h2>
+	   <h3>Initial Keywords: {{ data[0]['initial_keywords'] }} </h3>
+	   <h3>Final Keyword: {{ data[0]['final_keyword'] }} </h3>
+	 <!-- FIGURE OUT HOW TO PRINT CLIENT ID AND KEYWORDS USED FOR REPORT -->
+	 {% endif %}
+	 {% if data[1:] %}
+	 {% for row in data[1:] %}
+	  
+	  <h2 style="text-align:left;font-size:45px;">Report For {{ row['domain'].split(".")[0] }}</h2> 
+      <div class="domain_report">
+	  <h3 style="text-align:left;margin-bottom:0;">Domain Summary</h3>
+	  
+	  <!-- TABLE FOR DOMAIN SUMMARY DATA -->
+	  <table class="domain_summary">
+	    <!-- FIRST ROW COLUMN NAME -->
+		<tr>
+          <td>Domain Name:</td>
+		  <td>{{ row['domain'] }}</td>
+		</tr>
+		<tr>
+		  <td>Creation Date:</td>
+		  <td>{{ row['create_date'] }}</td>
+		</tr>
+		<tr>
+		  <td>Expiry Date:</td>
+		  <td>{{ row['expiry_date'] }}</td>
+		</tr>
+	  </table>
+
+	  <!-- TABLE FOR ENRICHED INFORMATION -->
+	  <h3 style="text-align: left;margin-bottom:0;">Enriched Data W/ Keyword</h3>
+      <table class="enriched_data">
+	    <tr>
+		  <td>Domain Levenshtein From Keyword</td>
+		  <td>{{ row['levenshtein'] }}</td>
+		</tr>
+		<tr>
+		  <td>Domain Entropy</td>
+		  <td>{{ row['entropy'] }}</td>
+		</tr>
+		<tr>
+		  <td>Domain TLD</td>
+		  <td>{{ row['tld'] }}</td>
+		<tr>
+		{% if row['subdomains'] != "" %}
+		  <tr>
+		    <td>Subdomain List</td> 
+			<td>{{ row['subdomains'].replace("#",", ") }}</td>
+	      </tr>
+		{% endif %}
+      </table>
+	  <br>
+
+	  <!-- TABLE FOR REGISTRANT INFORMATION -->
+	  <h3 style="text-align: left;margin-bottom:0;">Registrant Info</h3>
+	  <table class="registrant_info">
+		<tr>
+		  <td>Domain Registrar Name</td>
+		  <td>{{ row['domain_registrar_name'] }}</td>
+		</tr>
+		<tr>
+		  <td>Domain Registrar WhoIS</td> 
+		  <td>{{ row['domain_registrar_whois'] }}</td>
+		</tr>
+		<tr>
+		  <td>Domain Registrar URL</td>
+		  <td>{{ row['domain_registrar_url'] }}</td>
+		</tr>
+	    <tr>
+		  <td>Registrant Name</td>
+		  <td>{{ row['registrant_name'] }}</td>
+		</tr>
+		<tr>
+		  <td>Registrant Country</td>
+		  <td>{{ row['registrant_country'] }}</td>
+		</tr>
+      </table>
+
+      </div>
+	{% endfor %}
+	  <!-- IF THERE IS NO DATA TO DISPLAY -->
+	  {% else %}
+	  <h1>
+	    NO VALUES FOUND FOR KEYWORD OR ID
+	  </h1>
+    {% endif %} 
+	</div>
+{% include 'footer.html' %}

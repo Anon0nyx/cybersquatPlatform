@@ -1,0 +1,10 @@
+{% include 'top.html' %}
+{% include 'nav.html' %}
+  <h1 style="width:60%;color:white;font-size:45px;padding-top:1em;margin:auto;margin-top:200px;">CyberMonitoring Report Generator</h1>
+  
+  <form class="domain_search" action="{{url_for('domain_form')}}" method="post">
+    <input type="text" name="value" placeholder="Enter Keyword ID...">
+	<button type="submit" name="Submit">Search</button><br>
+  </form>
+  <br>
+{% include 'footer.html' %}

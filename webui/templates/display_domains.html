@@ -1,0 +1,10 @@
+{% include 'top.html' %}
+{% include 'nav.html' %}
+	<div style="max-height:85vh;overflow-y:auto;">
+	{% for domain in domain_list %}
+	  <form class="domain_display" action="{{url_for('domain_form')}}" method="post">
+	    <button type="domain" name="value" value="{{domain}}">{{domain}}</button>
+      </form>
+	{% endfor %}
+	</div>
+{% include 'footer.html' %}
