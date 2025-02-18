@@ -18,7 +18,7 @@ def main():
 
 @app.route("/domain_report", methods=["POST"])
 def domain_form():
-	conn = sqlite3.connect("../monitoring_system/cybermonitoring.db")
+	conn = sqlite3.connect("../cybermonitoring.db")
 	db = conn.cursor()
 
 	keyword = request.form["value"]
