@@ -28,3 +28,14 @@ Deactivate venv:
 ~~~
 deactivate
 ~~~
+
+# Running the two parts of the project
+Run WebUI:
+~~~
+cd webui
+flask run
+~~~
+Run Data Enrichment
+~~~
+python app.py
+~~~
